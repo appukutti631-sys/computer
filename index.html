@@ -1,0 +1,102 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Home | AGPC Computer Engineering</title><meta name="description" content="Department of Computer Engineering, Arasan Ganesan Polytechnic College, Sivakasi"><link rel="stylesheet" href="assets/css/styles.css"><style>
+.home-slider{position:relative;height:min(72vh,650px);min-height:430px;overflow:hidden;background:#111}
+.home-slide{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .8s ease;}
+.home-slide.active{opacity:1;visibility:visible;z-index:1}
+.home-slide img{width:100%;height:100%;object-fit:cover;display:block}
+.home-slide::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.62),rgba(0,0,0,.12) 65%,rgba(0,0,0,.3));}
+.slide-caption{position:absolute;left:7%;top:50%;transform:translateY(-50%);z-index:2;color:#fff;max-width:620px;text-shadow:0 3px 18px rgba(0,0,0,.5)}
+.slide-caption span{font-size:.9rem;font-weight:700;letter-spacing:2px;text-transform:uppercase}
+.slide-caption h2{font-size:clamp(2rem,5vw,4.4rem);line-height:1.05;margin:.5rem 0 .8rem;color:#fff}
+.slide-caption p{font-size:clamp(1rem,2vw,1.35rem);margin:0}
+.home-slide-prev,.home-slide-next{position:absolute;top:50%;transform:translateY(-50%);z-index:4;width:48px;height:48px;border:1px solid rgba(255,255,255,.5);border-radius:50%;background:rgba(0,0,0,.35);color:#fff;font-size:22px;cursor:pointer}
+.home-slide-prev{left:22px}.home-slide-next{right:22px}
+.home-slide-prev:hover,.home-slide-next:hover{background:rgba(0,0,0,.65)}
+.home-slide-dots{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);z-index:4;display:flex;gap:9px}
+.home-slide-dots button{width:11px;height:11px;border-radius:50%;border:1px solid #fff;background:rgba(255,255,255,.45);padding:0;cursor:pointer}
+.home-slide-dots button.active{background:#fff;transform:scale(1.2)}
+@media(max-width:700px){.home-slider{height:58vh;min-height:360px}.slide-caption{left:6%;right:6%}.slide-caption h2{font-size:2rem}.home-slide-prev,.home-slide-next{width:40px;height:40px}.home-slide-prev{left:12px}.home-slide-next{right:12px}}
+</style><link rel="stylesheet" href="assets/css/language.css">
+
+<style>
+#agpcIntro{position:fixed;inset:0;z-index:99999;display:grid;place-items:center;background:radial-gradient(circle at 50% 35%,#2a2a2a 0,#090909 48%,#000 100%);perspective:1200px;transition:opacity .8s ease,visibility .8s ease}
+#agpcIntro.hide{opacity:0;visibility:hidden;pointer-events:none}
+.agpc-intro-card{width:min(88vw,720px);text-align:center;color:#fff;transform-style:preserve-3d;animation:introFloat 2.8s ease-in-out infinite alternate}
+.agpc-intro-logo{width:clamp(100px,20vw,155px);filter:drop-shadow(0 15px 22px rgba(255,215,0,.3));animation:logo3d 3.2s ease-in-out infinite}
+.agpc-intro-college{margin:18px 0 8px;font-size:clamp(1.35rem,4vw,2.7rem);font-weight:900;letter-spacing:2px;text-transform:uppercase;background:linear-gradient(90deg,#fff,#ffd76a,#fff);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 5px 25px rgba(255,215,0,.18)}
+.agpc-intro-welcome{font-size:clamp(1rem,3vw,1.5rem);letter-spacing:3px;color:#f7f7f7;text-transform:uppercase}
+.agpc-intro-dept{font-size:clamp(1.1rem,3.5vw,2rem);font-weight:800;color:#ffd76a;margin-top:8px;text-shadow:0 0 22px rgba(255,215,0,.35)}
+.agpc-intro-line{width:min(380px,70vw);height:2px;margin:20px auto;background:linear-gradient(90deg,transparent,#ffd76a,transparent)}
+.agpc-enter{border:1px solid rgba(255,215,0,.65);background:rgba(255,215,0,.08);color:#fff;border-radius:999px;padding:11px 25px;font-weight:700;letter-spacing:1px;cursor:pointer;backdrop-filter:blur(8px);box-shadow:0 0 25px rgba(255,215,0,.12)}
+@keyframes introFloat{from{transform:rotateX(1deg) rotateY(-2deg) translateY(0)}to{transform:rotateX(-1deg) rotateY(2deg) translateY(-10px)}}
+@keyframes logo3d{0%,100%{transform:rotateY(-8deg) rotateX(2deg) scale(1)}50%{transform:rotateY(8deg) rotateX(-2deg) scale(1.04)}}
+@media(max-width:600px){.agpc-intro-card{width:92vw}.agpc-intro-college{letter-spacing:1px}}
+</style>
+<div id="agpcIntro" aria-label="AGPC welcome intro">
+  <div class="agpc-intro-card">
+    <img class="agpc-intro-logo" src="assets/images/college-logo.png" alt="AGPC College Logo">
+    <div class="agpc-intro-college">ARASAN GANESAN POLYTECHNIC COLLEGE</div>
+    <div class="agpc-intro-welcome">Welcome to</div>
+    <div class="agpc-intro-dept">Department of Computer Engineering</div>
+    <div class="agpc-intro-line"></div>
+    <button class="agpc-enter" id="agpcEnter" type="button">Enter Website</button>
+  </div>
+</div>
+
+<link rel="stylesheet" href="assets/css/kutti-ai.css">
+</head><body>
+<header class="header"><div class="container brand"><img src="assets/images/college-logo.png" alt="AGPC logo"><div class="brand-copy"><h1>ARASAN GANESAN POLYTECHNIC COLLEGE</h1><p>Department of Computer Engineering · Sivakasi</p></div></div><div class="menu-bar"><div class="container menu-bar-inner"><span class="menu-title">Department Menu</span><button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-controls="sideMenu" aria-expanded="false"><span></span><span></span><span></span></button></div></div><div class="menu-overlay" id="menuOverlay"></div><aside class="side-menu" id="sideMenu" aria-hidden="true"><div class="side-menu-head"><div><strong>AGPC</strong><small>Computer Engineering</small></div><button class="menu-close" type="button" aria-label="Close navigation menu">×</button></div><nav class="side-links"><a class="active" href="index.html">Home</a><a class="" href="about.html">About</a><a class="" href="faculty.html">Faculty</a><a class="" href="courses.html">Courses</a><a class="" href="achievements.html">Achievements</a><a class="" href="events.html">Events</a><a class="" href="gallery.html">Gallery</a><a class="" href="contact.html">Contact</a></nav></aside></header><main><section class="home-slider" aria-label="AGPC campus slideshow">
+<div class="home-slide active"><img src="assets/images/home-lab.jpg" alt="Computer Engineering laboratory"><div class="slide-caption"><span>AGPC</span><h2>Computer Engineering Laboratory</h2><p>Learn · Build · Innovate</p></div></div>
+<div class="home-slide"><img src="assets/images/home-department.jpg" alt="Department building"><div class="slide-caption"><span>AGPC</span><h2>Department of Computer Engineering</h2><p>Quality technical education and practical learning</p></div></div>
+<div class="home-slide"><img src="assets/images/home-bus.jpg" alt="AGPC college buses"><div class="slide-caption"><span>AGPC</span><h2>College Transport</h2><p>Convenient bus facilities for students</p></div></div>
+<div class="home-slide"><img src="assets/images/home-college.jpg" alt="Arasan Ganesan Polytechnic College"><div class="slide-caption"><span>ARASAN GANESAN POLYTECHNIC COLLEGE</span><h2>100% Placement</h2><p>Six courses · 40+ years experience</p></div></div>
+<div class="home-slide"><img src="assets/images/home-memorial.jpg" alt="Arasan A.M.S.G. Vijayakumar Memorial Building"><div class="slide-caption"><span>AGPC</span><h2>Campus Facilities</h2><p>Arasan A.M.S.G. Vijayakumar Memorial Building</p></div></div>
+<div class="home-slide"><img src="assets/images/home-classroom-session.jpg" alt="Computer Engineering classroom session"><div class="slide-caption"><span>AGPC</span><h2>Interactive Learning</h2><p>Computer Engineering classroom activities</p></div></div>
+<div class="home-slide"><img src="assets/images/home-department-team.jpg" alt="Computer Engineering students and faculty group"><div class="slide-caption"><span>AGPC</span><h2>C-Tech Family</h2><p>Students and faculty together</p></div></div>
+<div class="home-slide"><img src="assets/images/home-award-event.jpg" alt="Computer Engineering students receiving awards"><div class="slide-caption"><span>AGPC</span><h2>Celebrating Excellence</h2><p>Student achievement and recognition</p></div></div>
+<div class="home-slide"><img src="assets/images/home-computer-center.jpg" alt="Computer hardware practical session"><div class="slide-caption"><span>AGPC</span><h2>Hands-On Practice</h2><p>Computer hardware and practical learning</p></div></div>
+<div class="home-slide"><img src="assets/images/home-lab-session.jpg" alt="Computer Engineering lab session"><div class="slide-caption"><span>AGPC</span><h2>Practical Skills</h2><p>Learn · Build · Innovate</p></div></div>
+<button class="home-slide-prev" aria-label="Previous photo">❮</button><button class="home-slide-next" aria-label="Next photo">❯</button>
+<div class="home-slide-dots" aria-label="Slideshow controls"><button class="active" aria-label="Photo 1"></button><button aria-label="Photo 2"></button><button aria-label="Photo 3"></button><button aria-label="Photo 4"></button><button aria-label="Photo 5"></button><button aria-label="Photo 6"></button><button aria-label="Photo 7"></button><button aria-label="Photo 8"></button><button aria-label="Photo 9"></button><button aria-label="Photo 10"></button></div>
+</section>
+<section class="section"><div class="container"><div class="grid grid-3"><div class="card feature reveal"><div class="icon">🎓</div><h3>Experienced Faculty</h3><p class="muted">Dedicated teaching and mentoring support.</p></div><div class="card feature reveal"><div class="icon">💻</div><h3>Modern Learning</h3><p class="muted">Theory, labs, projects and practical exposure.</p></div><div class="card feature reveal"><div class="icon">🏆</div><h3>Active Achievements</h3><p class="muted">Student participation in competitions and camps.</p></div></div></div></section>
+<section class="section" style="padding-top:0"><div class="container"><div class="banner"><h3>Student Mark Portal</h3><p>Students can check semester-wise marks using their Register Number.</p><a class="btn alt" href="marks.html">Check Student Marks →</a></div></div></section><section class="section" style="padding-top:1rem"><div class="container"><div class="about-split"><img src="assets/images/computer-center.jpg" alt="Computer Center building"><div><div class="section-head" style="display:block;margin-bottom:1rem"><h2>About Our Department</h2><p>The Department of Computer Engineering focuses on quality technical education, innovation, practical learning and industry-oriented skills.</p></div><a class="btn" href="about.html">Read More →</a></div></div></div></section>
+<section class="section" style="padding-top:1rem"><div class="container"><div class="stats"><div class="stat"><strong>5</strong><span>Faculty Profiles</span></div><div class="stat"><strong>4</strong><span>Semesters Covered</span></div><div class="stat"><strong>6+</strong><span>Major Achievements</span></div><div class="stat"><strong>1</strong><span>Workshop Highlight</span></div></div></div></section>
+<section class="section"><div class="container"><div class="section-head"><div><h2>Latest Highlights</h2><p>Selected department activities and student achievements.</p></div><a class="btn" href="achievements.html" style="margin:0">View All →</a></div><div class="grid grid-3"><article class="card achievement-card"><img src="assets/images/achievement-create-2025.jpg" alt="Create 2025 national project competition"><div class="card-pad"><h3>II Prize – Create 2025</h3><p class="muted">4th National Level Project Competition, Chennai.</p></div></article><article class="card achievement-card"><img src="assets/images/achievement-jeyasurya-madhan.jpg" alt="Powerhouse 2K25 presentation contest"><div class="card-pad"><h3>I Place – Powerhouse 2K25</h3><p class="muted">A. Jeyasurya & V. Madhan – PowerPoint Presentation Contest.</p></div></article><article class="card event-card"><img src="assets/images/event-canva-ai-workshop.jpg" alt="Canva and AI video editing workshop"><div class="card-pad"><h3>One-Day Workshop</h3><p class="muted">Canva and AI Video Editing Tools · 29.12.2025.</p></div></article></div></div></section>
+<section class="section" style="padding-top:0"><div class="container"><div class="banner"><h3>Build Your Future in Technology</h3><p>Explore programming, networks, databases, operating systems, AI, cloud computing and IoT.</p><a class="btn alt" href="courses.html">View Courses / Syllabus →</a></div></div></section></main><footer class="footer"><div class="container"><div class="footer-grid"><div><h3>Department of Computer Engineering</h3><p>Arasan Ganesan Polytechnic College, Sivakasi.</p><p style="margin-top:.7rem">Learn · Build · Innovate</p></div><div><h3>Quick Links</h3><p><a href="about.html">About</a></p><p><a href="faculty.html">Faculty</a></p><p><a href="courses.html">Courses / Syllabus</a></p><p><a href="achievements.html">Achievements</a></p></div><div><h3>Explore</h3><p><a href="events.html">Events</a></p><p><a href="gallery.html">Gallery</a></p><p><a href="marks.html">Student Marks</a><a href="contact.html">Contact</a></p></div></div></div><div class="footer-bottom"><div class="container">© <span data-year></span> Arasan Ganesan Polytechnic College · Department of Computer Engineering</div></div></footer><script>
+(function(){
+ const slides=[...document.querySelectorAll('.home-slide')];
+ const dots=[...document.querySelectorAll('.home-slide-dots button')];
+ const prev=document.querySelector('.home-slide-prev');
+ const next=document.querySelector('.home-slide-next');
+ let current=0, timer;
+ function show(i){current=(i+slides.length)%slides.length;slides.forEach((s,n)=>s.classList.toggle('active',n===current));dots.forEach((d,n)=>d.classList.toggle('active',n===current));}
+ function restart(){clearInterval(timer);timer=setInterval(()=>show(current+1),4500);}
+ prev.addEventListener('click',()=>{show(current-1);restart()});
+ next.addEventListener('click',()=>{show(current+1);restart()});
+ dots.forEach((d,n)=>d.addEventListener('click',()=>{show(n);restart()}));
+ show(0);restart();
+})();
+</script>
+<script>
+(function(){
+ const intro=document.getElementById('agpcIntro'), enter=document.getElementById('agpcEnter');
+ function closeIntro(){ intro.classList.add('hide'); setTimeout(()=>intro.remove(),900); }
+ function agpcClickSound(){
+  try{
+    const AC=window.AudioContext||window.webkitAudioContext; if(!AC)return;
+    const c=window.__agpcAudio||(window.__agpcAudio=new AC());
+    if(c.state==='suspended') c.resume();
+    const o=c.createOscillator(), g=c.createGain();
+    o.type='sine'; o.frequency.setValueAtTime(720,c.currentTime); o.frequency.exponentialRampToValueAtTime(980,c.currentTime+0.07);
+    g.gain.setValueAtTime(0.0001,c.currentTime); g.gain.exponentialRampToValueAtTime(0.28,c.currentTime+0.008); g.gain.exponentialRampToValueAtTime(0.0001,c.currentTime+0.16);
+    o.connect(g).connect(c.destination); o.start(); o.stop(c.currentTime+0.17);
+  }catch(e){}
+}
+enter.addEventListener('click',()=>{agpcClickSound();closeIntro();});
+document.addEventListener('click',e=>{const b=e.target.closest('button'); if(b && b!==enter) agpcClickSound();});
+ window.addEventListener('load',()=>{ setTimeout(()=>{ if(!intro.classList.contains('hide')) closeIntro(); },7000); });
+})();
+</script>
+<script src="assets/js/script.js"></script><script src="assets/js/language.js"></script>
+<script src="assets/js/kutti-ai.js"></script>
+</body></html>

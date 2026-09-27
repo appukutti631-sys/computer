@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Student Mark Portal | AGPC Computer Engineering</title>
+<meta name="description" content="AGPC Computer Engineering student result and staff mark management portal">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="assets/css/language.css">
+
+<style id="global-home-back-style">
+.global-home-back{position:fixed;left:18px;bottom:22px;z-index:9999;display:inline-flex;align-items:center;gap:8px;padding:11px 16px;border:1px solid #ff334f;border-radius:999px;background:#c8102e;color:#fff;text-decoration:none;font-weight:800;box-shadow:0 8px 24px rgba(200,16,46,.35);transition:.2s ease}.global-home-back:hover{transform:translateY(-2px);background:#a90d27;color:#fff;box-shadow:0 10px 28px rgba(200,16,46,.45)}.global-home-back span{font-size:18px;line-height:1}@media(max-width:600px){.global-home-back{left:12px;bottom:14px;padding:9px 13px;font-size:13px}}
+</style>
+<link rel="stylesheet" href="assets/css/kutti-ai.css">
+</head>
+<body>
+<div class="topbar"><div class="container"><span>🏫 Arasan Ganesan Polytechnic College, Sivakasi</span><span>📊 Computer Engineering Mark Portal</span></div></div>
+<header class="header"><div class="container brand"><img src="assets/images/college-logo.png" alt="AGPC logo"><div class="brand-copy"><h1>ARASAN GANESAN POLYTECHNIC COLLEGE</h1><p>Department of Computer Engineering · Student Result Portal</p></div></div>
+<div class="menu-bar"><div class="container menu-bar-inner"><span class="menu-title">Department Menu</span><button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-controls="sideMenu" aria-expanded="false"><span></span><span></span><span></span></button></div></div><div class="menu-overlay" id="menuOverlay"></div><aside class="side-menu" id="sideMenu" aria-hidden="true"><div class="side-menu-head"><div><strong>AGPC</strong><small>Computer Engineering</small></div><button class="menu-close" type="button" aria-label="Close navigation menu">×</button></div><nav class="side-links"><a class="" href="index.html">Home</a><a class="" href="about.html">About</a><a class="" href="faculty.html">Faculty</a><a class="" href="courses.html">Courses</a><a class="" href="achievements.html">Achievements</a><a class="" href="events.html">Events</a><a class="" href="gallery.html">Gallery</a><a class="" href="contact.html">Contact</a></nav></aside></header>
+<main>
+<section class="page-hero"><div class="container reveal"><span class="eyebrow">R2023 Mark Management</span><h2>Student Mark Portal</h2><p>Search official Computer Engineering results and manage staff-entered records.</p></div></section>
+<section class="section"><div class="container">
+<div class="marks-layout">
+<div class="card marks-panel"><div class="card-pad">
+<h3>🔐 Staff Login</h3><p class="muted">Staff usernames use the shared department password.</p>
+<form id="loginForm" class="marks-form"><label for="username">Username</label><input id="username" type="text" placeholder="e.g. b.bemil" required>
+<label for="password">Password</label><input id="password" type="password" placeholder="Enter password" required>
+<button class="btn" type="submit">Login →</button></form>
+<div id="loginMsg" class="portal-note"></div>
+<div id="staffDashboard" class="hidden">
+<h3 style="margin-top:1.4rem">⚙️ Staff Dashboard</h3>
+<div class="dashboard-actions">
+<button class="dash-btn" data-action="add">➕ Add Marks</button>
+<button class="dash-btn" data-action="edit">✏️ Edit Marks</button>
+<button class="dash-btn" data-action="delete">🗑️ Delete Marks</button>
+<button class="dash-btn" data-action="search">🔍 Search Student</button>
+<button class="dash-btn" data-action="view">📄 View Result</button>
+<button class="dash-btn" data-action="uploadpdf">📤 Add PDF</button>
+</div>
+<div id="staffTools"></div>
+</div>
+</div></div>
+<div class="card"><div class="card-pad">
+<h3>🔎 Search / View Result</h3>
+<form id="marksForm" class="marks-form">
+<label for="regNo">Register Number</label><input id="regNo" type="text" placeholder="Example: 24509854" required>
+<label for="semester">Semester</label><select id="semester" required><option value="2">2nd Semester</option><option value="3">3rd Semester</option><option value="4">4th Semester</option><option value="5">5th Semester</option><option value="6">6th Semester</option></select>
+<button class="btn" type="submit">View Result →</button>
+</form><p class="muted" style="margin-top:.6rem;font-size:.85rem">Test example: <strong>24509854</strong> → <strong>2nd Semester</strong></p>
+<div class="portal-note"><strong>Official data loaded:</strong> the supplied AGPC result PDFs are included in this ZIP under <code>data/official-results/</code>. The portal displays the Computer Engineering R2023 consolidated grade records extracted from those files.</div>
+</div></div>
+</div>
+<div class="card" style="margin-top:1.4rem"><div class="card-pad">
+<h3>📑 Uploaded PDF Results</h3>
+<p class="muted">Staff-added PDF files can be searched and opened here. PDFs are stored in this browser using IndexedDB.</p>
+<form id="pdfSearchForm" class="marks-form">
+<label for="pdfSearchReg">Register Number (optional)</label><input id="pdfSearchReg" type="text" placeholder="Example: 24509854">
+<label for="pdfSearchSem">Semester</label><select id="pdfSearchSem"><option value="2">2nd Semester</option><option value="3">3rd Semester</option><option value="4">4th Semester</option><option value="5">5th Semester</option><option value="6">6th Semester</option></select>
+<button class="btn" type="submit">🔎 Find PDF →</button>
+</form>
+<div id="pdfLibrary" style="margin-top:1rem"></div>
+</div></div>
+<div id="markResult" class="card result-panel hidden" style="margin-top:1.4rem"><div class="card-pad">
+<div class="result-head"><div><span class="eyebrow">Mark Statement</span><h3 id="studentName">Student</h3><p id="studentMeta" class="muted"></p></div><span id="resultBadge" class="result-badge">RESULT</span></div>
+<div class="table-wrap"><table class="table marks-table"><thead><tr><th>Subject</th><th>Code</th><th>Grade / Mark</th><th>Status</th></tr></thead><tbody id="marksBody"></tbody></table></div>
+<div class="result-summary"><div><span>Subjects</span><strong id="grandTotal">-</strong></div><div><span>Grade Summary</span><strong id="average">-</strong></div><div><span>Overall Result</span><strong id="overallResult">-</strong></div></div>
+</div></div>
+</div></section>
+<section class="section" style="padding-top:0"><div class="container"><div class="card"><div class="card-pad"><h3>🔐 Official Result Source PDFs</h3><p class="muted">Staff username + password required. Open the protected source-PDF page below.</p><a class="btn" href="source-pdfs.html">Open Official Result PDFs →</a></div></div></div></section></main>
+<footer class="footer"><div class="container"><div class="footer-grid"><div><h3>Department of Computer Engineering</h3><p>Arasan Ganesan Polytechnic College, Sivakasi.</p></div><div><h3>Quick Links</h3><p><a href="faculty.html">Faculty</a></p><p><a href="courses.html">Courses / Syllabus</a></p><p><a href="marks.html">Student Marks</a></p></div><div><h3>Explore</h3><p><a href="achievements.html">Achievements</a></p><p><a href="gallery.html">Gallery</a></p><p><a href="contact.html">Contact</a></p></div></div></div><div class="footer-bottom"><div class="container">© <span data-year></span> Arasan Ganesan Polytechnic College · Department of Computer Engineering</div></div></footer>
+<script src="assets/js/script.js"></script><script src="assets/data/official_results.js"></script><script src="assets/js/marks.js"></script>
+<script src="assets/js/language.js"></script>
+
+<a class="global-home-back" href="index.html" aria-label="Back to Home"><span>←</span> Home</a>
+<script src="assets/js/kutti-ai.js"></script>
+</body></html>

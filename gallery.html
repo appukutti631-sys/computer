@@ -1,0 +1,128 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Gallery | AGPC Computer Engineering</title><meta name="description" content="Department of Computer Engineering, Arasan Ganesan Polytechnic College, Sivakasi"><link rel="stylesheet" href="assets/css/styles.css"><link rel="stylesheet" href="assets/css/language.css">
+
+<style id="global-home-back-style">
+.global-home-back{position:fixed;left:18px;bottom:22px;z-index:9999;display:inline-flex;align-items:center;gap:8px;padding:11px 16px;border:1px solid #ff334f;border-radius:999px;background:#c8102e;color:#fff;text-decoration:none;font-weight:800;box-shadow:0 8px 24px rgba(200,16,46,.35);transition:.2s ease}.global-home-back:hover{transform:translateY(-2px);background:#a90d27;color:#fff;box-shadow:0 10px 28px rgba(200,16,46,.45)}.global-home-back span{font-size:18px;line-height:1}@media(max-width:600px){.global-home-back{left:12px;bottom:14px;padding:9px 13px;font-size:13px}}
+</style>
+<link rel="stylesheet" href="assets/css/kutti-ai.css">
+</head><body>
+<header class="header"><div class="container brand"><img src="assets/images/college-logo.png" alt="AGPC logo"><div class="brand-copy"><h1>ARASAN GANESAN POLYTECHNIC COLLEGE</h1><p>Department of Computer Engineering · Sivakasi</p></div></div><div class="menu-bar"><div class="container menu-bar-inner"><span class="menu-title">Department Menu</span><button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-controls="sideMenu" aria-expanded="false"><span></span><span></span><span></span></button></div></div><div class="menu-overlay" id="menuOverlay"></div><aside class="side-menu" id="sideMenu" aria-hidden="true"><div class="side-menu-head"><div><strong>AGPC</strong><small>Computer Engineering</small></div><button class="menu-close" type="button" aria-label="Close navigation menu">×</button></div><nav class="side-links"><a class="" href="index.html">Home</a><a class="" href="about.html">About</a><a class="" href="faculty.html">Faculty</a><a class="" href="courses.html">Courses</a><a class="" href="achievements.html">Achievements</a><a class="" href="events.html">Events</a><a class="active" href="gallery.html">Gallery</a><a class="" href="contact.html">Contact</a></nav></aside></header><main><section class="page-hero"><div class="container"><span class="eyebrow" style="color:var(--blue)">Media</span><h2>Gallery</h2><p class="muted">Department photos, activities and achievement moments.</p></div></section><section class="section"><div class="container"><div class="gallery-tools"><div><h3 style="margin:0">Photo Gallery</h3><p class="muted" style="margin:.35rem 0 0">Add your own photos from this computer and view them in the same photo-app style.</p></div><div class="gallery-actions"><button class="gallery-admin-btn" id="galleryAdminBtn" type="button">🔐 Manage Photos</button><label class="gallery-add-btn gallery-admin-only" for="galleryFileInput">＋ Add Photos</label><input id="galleryFileInput" type="file" accept="image/*" multiple hidden><button class="gallery-clear-btn gallery-admin-only" id="clearAddedPhotos" type="button">Clear Added Photos</button></div></div><div class="gallery-admin-panel" id="galleryAdminPanel" hidden><div><strong>Gallery Admin</strong><p>Enter the staff password to add or delete gallery photos.</p></div><button id="galleryAdminLogout" type="button">Logout</button></div><div class="gallery" id="photoGallery"><figure data-gallery-id="kodaikanal"><img src="assets/images/gallery-kodaikanal-trip.jpg" alt="C-Tech Family Kodaikanal Trip" loading="lazy"><figcaption><strong>Kodaikanal Trip</strong><span>C-Tech Family</span></figcaption></figure></div><div id="addedGallery" class="gallery added-gallery"></div></div></section></main>
+<div class="gallery-lightbox" id="galleryLightbox" aria-hidden="true"><button class="lightbox-close" type="button" aria-label="Close">×</button><button class="lightbox-prev" type="button" aria-label="Previous photo">‹</button><img id="lightboxImage" src="" alt=""><div class="lightbox-caption" id="lightboxCaption"></div><button class="lightbox-next" type="button" aria-label="Next photo">›</button></div><footer class="footer"><div class="container"><div class="footer-grid"><div><h3>Department of Computer Engineering</h3><p>Arasan Ganesan Polytechnic College, Sivakasi.</p><p style="margin-top:.7rem">Learn · Build · Innovate</p></div><div><h3>Quick Links</h3><p><a href="about.html">About</a></p><p><a href="faculty.html">Faculty</a></p><p><a href="courses.html">Courses / Syllabus</a></p><p><a href="achievements.html">Achievements</a></p></div><div><h3>Explore</h3><p><a href="events.html">Events</a></p><p><a href="gallery.html">Gallery</a></p><p><a href="marks.html">Student Marks</a><a href="contact.html">Contact</a></p></div></div></div><div class="footer-bottom"><div class="container">© <span data-year></span> Arasan Ganesan Polytechnic College · Department of Computer Engineering</div></div></footer><script src="assets/js/script.js"></script><script>
+(function(){
+ const gallery=document.getElementById('photoGallery'); if(!gallery)return;
+ const items=[...gallery.querySelectorAll('figure')], box=document.getElementById('galleryLightbox'), img=document.getElementById('lightboxImage'), cap=document.getElementById('lightboxCaption'); let i=0;
+ function show(n){i=(n+items.length)%items.length; const im=items[i].querySelector('img'); img.src=im.src; img.alt=im.alt; cap.textContent=items[i].querySelector('figcaption')?.innerText||im.alt; box.classList.add('open'); box.setAttribute('aria-hidden','false');}
+ items.forEach((el,n)=>el.addEventListener('click',()=>show(n)));
+ box.querySelector('.lightbox-close').onclick=()=>{box.classList.remove('open');box.setAttribute('aria-hidden','true');};
+ box.querySelector('.lightbox-prev').onclick=()=>show(i-1); box.querySelector('.lightbox-next').onclick=()=>show(i+1);
+ box.addEventListener('click',e=>{if(e.target===box)box.querySelector('.lightbox-close').click();});
+ document.addEventListener('keydown',e=>{if(!box.classList.contains('open'))return;if(e.key==='Escape')box.querySelector('.lightbox-close').click();if(e.key==='ArrowLeft')show(i-1);if(e.key==='ArrowRight')show(i+1);});
+})();
+</script><style>
+.gallery-tools{display:flex;justify-content:space-between;align-items:center;gap:18px;margin-bottom:22px;padding:18px 20px;border:1px solid rgba(201,155,35,.35);border-radius:18px;background:rgba(255,255,255,.72);box-shadow:0 10px 28px rgba(0,0,0,.06)}
+.gallery-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.gallery-add-btn,.gallery-clear-btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 18px;border-radius:12px;font-weight:800;cursor:pointer;transition:transform .2s ease,box-shadow .2s ease}.gallery-add-btn{background:linear-gradient(135deg,#c89b2c,#9f7517);color:#fff;box-shadow:0 8px 18px rgba(159,117,23,.25)}.gallery-clear-btn{border:1px solid rgba(180,20,30,.35);background:#fff;color:#b4141e}.gallery-add-btn:hover,.gallery-clear-btn:hover{transform:translateY(-2px)}.added-gallery:empty{display:none}.added-photo{position:relative}.added-photo .remove-added{position:absolute;right:10px;top:10px;border:0;background:rgba(0,0,0,.72);color:#fff;width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:20px;z-index:2}.added-photo .remove-added:hover{background:#b4141e}.gallery-note{font-size:.86rem;opacity:.78;margin-top:10px}
+<style>
+.gallery{grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}.gallery figure{cursor:pointer;overflow:hidden;position:relative}.gallery figure img{transition:transform .45s ease}.gallery figure:hover img{transform:scale(1.05)}.gallery figcaption strong,.gallery figcaption span{display:block}.gallery figcaption span{font-size:.82rem;opacity:.75;margin-top:3px}.gallery-lightbox{position:fixed;inset:0;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;z-index:9999;padding:40px}.gallery-lightbox.open{display:flex}.gallery-lightbox img{max-width:90vw;max-height:82vh;object-fit:contain;border-radius:14px;box-shadow:0 20px 60px rgba(0,0,0,.5)}.lightbox-close,.lightbox-prev,.lightbox-next{position:absolute;border:0;background:rgba(255,255,255,.14);color:#fff;width:48px;height:48px;border-radius:50%;font-size:32px;cursor:pointer}.lightbox-close{top:20px;right:25px}.lightbox-prev{left:25px}.lightbox-next{right:25px}.lightbox-caption{position:absolute;bottom:18px;color:#fff;font-size:16px;text-align:center;max-width:80vw}.lightbox-close:hover,.lightbox-prev:hover,.lightbox-next:hover{background:rgba(255,255,255,.28)}@media(max-width:600px){.gallery-lightbox{padding:20px}.gallery-lightbox img{max-width:94vw;max-height:76vh}.lightbox-prev{left:10px}.lightbox-next{right:10px}.lightbox-close{right:10px}.lightbox-caption{bottom:8px;font-size:14px}}
+</style><script>
+(function(){
+ const input=document.getElementById('galleryFileInput'), added=document.getElementById('addedGallery'), clearBtn=document.getElementById('clearAddedPhotos'), gallery=document.getElementById('photoGallery'), box=document.getElementById('galleryLightbox'), img=document.getElementById('lightboxImage'), cap=document.getElementById('lightboxCaption');
+ if(!input||!added||!box)return;
+ const DB='agpc_gallery_db', STORE='photos'; let db=null, currentIndex=0, allItems=[];
+ function openDB(){return new Promise((resolve,reject)=>{const r=indexedDB.open(DB,1);r.onupgradeneeded=()=>{if(!r.result.objectStoreNames.contains(STORE))r.result.createObjectStore(STORE,{keyPath:'id',autoIncrement:true});};r.onsuccess=()=>{db=r.result;resolve(db)};r.onerror=()=>reject(r.error)});}
+ function readAll(){return new Promise((resolve,reject)=>{const r=db.transaction(STORE,'readonly').objectStore(STORE).getAll();r.onsuccess=()=>resolve(r.result||[]);r.onerror=()=>reject(r.error)});}
+ function save(photo){return new Promise((resolve,reject)=>{const r=db.transaction(STORE,'readwrite').objectStore(STORE).add(photo);r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error)});}
+ function remove(id){return new Promise((resolve,reject)=>{const r=db.transaction(STORE,'readwrite').objectStore(STORE).delete(id);r.onsuccess=()=>resolve();r.onerror=()=>reject(r.error)});}
+ function clear(){return new Promise((resolve,reject)=>{const r=db.transaction(STORE,'readwrite').objectStore(STORE).clear();r.onsuccess=()=>resolve();r.onerror=()=>reject(r.error)});}
+ function renderAdded(){added.innerHTML=''; readAll().then(rows=>rows.forEach(row=>{const fig=document.createElement('figure');fig.className='added-photo';fig.dataset.id=row.id;const im=document.createElement('img');im.src=row.data;im.alt=row.title||'Added gallery photo';im.loading='lazy';const fc=document.createElement('figcaption');fc.textContent=row.title||'Added Photo';const rm=document.createElement('button');rm.className='remove-added';rm.type='button';rm.title='Remove photo';rm.setAttribute('aria-label','Remove photo');rm.textContent='×';rm.onclick=async e=>{e.stopPropagation();await remove(row.id);renderAdded();};fig.append(im,fc,rm);fig.onclick=()=>openDynamic(row);added.appendChild(fig)}));}
+ function collect(){allItems=[...gallery.querySelectorAll('figure'),...added.querySelectorAll('figure')];return allItems}
+ function openDynamic(row){collect();const idx=allItems.findIndex(x=>x.dataset.id==row.id);show(idx<0?0:idx)}
+ function show(n){allItems=collect();if(!allItems.length)return;currentIndex=(n+allItems.length)%allItems.length;const im=allItems[currentIndex].querySelector('img');img.src=im.src;img.alt=im.alt;cap.textContent=allItems[currentIndex].querySelector('figcaption')?.innerText||im.alt;box.classList.add('open');box.setAttribute('aria-hidden','false');}
+ // Rebind static items to use the same lightbox after dynamic photos are available.
+ [...gallery.querySelectorAll('figure')].forEach((el,n)=>el.addEventListener('click',()=>show(n)));
+ box.querySelector('.lightbox-close').onclick=()=>{box.classList.remove('open');box.setAttribute('aria-hidden','true');};
+ box.querySelector('.lightbox-prev').onclick=()=>show(currentIndex-1);box.querySelector('.lightbox-next').onclick=()=>show(currentIndex+1);
+ box.addEventListener('click',e=>{if(e.target===box)box.querySelector('.lightbox-close').click();});
+ document.addEventListener('keydown',e=>{if(!box.classList.contains('open'))return;if(e.key==='Escape')box.querySelector('.lightbox-close').click();if(e.key==='ArrowLeft')show(currentIndex-1);if(e.key==='ArrowRight')show(currentIndex+1);});
+ input.addEventListener('change',async()=>{for(const file of [...input.files]){if(!file.type.startsWith('image/'))continue;const data=await new Promise((res,rej)=>{const fr=new FileReader();fr.onload=()=>res(fr.result);fr.onerror=rej;fr.readAsDataURL(file)});await save({name:file.name,title:file.name.replace(/\.[^.]+$/,''),data,createdAt:Date.now()});}input.value='';renderAdded();});
+ clearBtn.onclick=async()=>{if(confirm('Remove all photos added from this browser?')){await clear();renderAdded();}};
+ openDB().then(renderAdded).catch(()=>{clearBtn.style.display='none';});
+})();
+</script>
+<style>
+.gallery-admin-btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 18px;border-radius:12px;font-weight:800;cursor:pointer;border:1px solid rgba(201,155,35,.55);background:#111;color:#fff;transition:.2s}.gallery-admin-btn:hover{transform:translateY(-2px)}
+.gallery-admin-panel{display:flex;justify-content:space-between;align-items:center;gap:16px;margin:0 0 18px;padding:16px 18px;border-radius:16px;background:linear-gradient(135deg,#fff8dc,#fff);border:1px solid rgba(201,155,35,.5);box-shadow:0 8px 24px rgba(0,0,0,.06)}.gallery-admin-panel p{margin:.25rem 0 0;font-size:.9rem;opacity:.75}.gallery-admin-panel button{border:0;border-radius:10px;padding:10px 14px;background:#b4141e;color:#fff;font-weight:800;cursor:pointer}.gallery-admin-only[hidden]{display:none!important}.static-delete-photo{position:absolute;right:10px;top:10px;border:0;background:rgba(180,20,30,.94);color:#fff;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:20px;z-index:4;box-shadow:0 4px 12px rgba(0,0,0,.25)}.static-delete-photo:hover{transform:scale(1.08)}.gallery figure{position:relative}.gallery-admin-status{font-size:.85rem;font-weight:700;margin-top:8px}@media(max-width:600px){.gallery-admin-panel{align-items:flex-start;flex-direction:column}}
+</style><script src="assets/js/language.js"></script>
+<script>
+(function(){
+  const PASSWORD='cc2k26';
+  const btn=document.getElementById('galleryAdminBtn'), panel=document.getElementById('galleryAdminPanel'), logout=document.getElementById('galleryAdminLogout');
+  const adminEls=[...document.querySelectorAll('.gallery-admin-only')];
+  const gallery=document.getElementById('photoGallery');
+  if(!btn||!gallery)return;
+  let logged=false;
+  function setAdmin(on){
+    logged=on; panel.hidden=!on;
+    adminEls.forEach(el=>el.hidden=!on);
+    document.querySelectorAll('.remove-added').forEach(b=>b.style.display=on?'block':'none');
+    document.querySelectorAll('.static-delete-photo').forEach(b=>b.style.display=on?'block':'none');
+    btn.textContent=on?'🔓 Gallery Admin':'🔐 Manage Photos';
+  }
+  function cleanDeleted(){
+    let ids=[]; try{ids=JSON.parse(localStorage.getItem('agpc_deleted_gallery_photos')||'[]')}catch(e){}
+    gallery.querySelectorAll('figure[data-gallery-id]').forEach(fig=>{if(ids.includes(fig.dataset.galleryId))fig.remove();});
+  }
+  function addDeleteButtons(){
+    gallery.querySelectorAll('figure').forEach((fig,idx)=>{
+      if(fig.querySelector('.static-delete-photo'))return;
+      const im=fig.querySelector('img'); if(!im)return;
+      const id=im.getAttribute('src'); fig.dataset.galleryId=id;
+      const b=document.createElement('button'); b.type='button'; b.className='static-delete-photo'; b.textContent='×'; b.title='Delete this gallery photo'; b.setAttribute('aria-label','Delete this gallery photo');
+      b.onclick=function(e){e.stopPropagation(); if(!logged)return; if(confirm('Delete this gallery photo from this website browser?')){let ids=[];try{ids=JSON.parse(localStorage.getItem('agpc_deleted_gallery_photos')||'[]')}catch(x){} if(!ids.includes(id))ids.push(id); localStorage.setItem('agpc_deleted_gallery_photos',JSON.stringify(ids)); fig.remove();}};
+      fig.appendChild(b);
+    });
+  }
+  cleanDeleted(); addDeleteButtons(); setAdmin(false);
+  btn.onclick=function(){
+    if(logged){setAdmin(false);return;}
+    const pw=prompt('Enter Gallery Admin Password:');
+    if(pw===null)return;
+    if(pw===PASSWORD){setAdmin(true); addDeleteButtons();}
+    else alert('Incorrect password.');
+  };
+  logout.onclick=function(){setAdmin(false)};
+  // Keep newly rendered added-photo delete buttons behind the password gate.
+  const obs=new MutationObserver(()=>{document.querySelectorAll('.remove-added').forEach(b=>b.style.display=logged?'block':'none');});
+  obs.observe(document.getElementById('addedGallery'),{childList:true});
+})();
+</script><script>
+(function(){
+  const PASSWORD='cc2k26';
+  const gallery=document.getElementById('photoGallery'), added=document.getElementById('addedGallery'), adminBtn=document.getElementById('galleryAdminBtn');
+  if(!gallery||!adminBtn)return;
+  let renameUnlocked=false;
+  const getNames=()=>{try{return JSON.parse(localStorage.getItem('agpc_gallery_renamed')||'{}')}catch(e){return {}}};
+  const setNames=o=>localStorage.setItem('agpc_gallery_renamed',JSON.stringify(o));
+  function addRenameButton(fig, key, isStatic){
+    if(fig.querySelector('.rename-photo'))return;
+    const b=document.createElement('button'); b.type='button'; b.className='rename-photo'; b.textContent='✎'; b.title='Rename photo'; b.setAttribute('aria-label','Rename photo');
+    b.onclick=async e=>{e.stopPropagation(); if(!renameUnlocked)return; const fc=fig.querySelector('figcaption'); const current=(fc?.innerText||'').split('\n')[0].trim(); const name=prompt('Enter new photo name:',current); if(!name||!name.trim())return; const clean=name.trim();
+      if(isStatic){const names=getNames(); names[key]=clean; setNames(names); if(fc){const span=fc.querySelector('span'); fc.innerHTML=''; const strong=document.createElement('strong'); strong.textContent=clean; fc.appendChild(strong); if(span){span.textContent='';fc.appendChild(span)}}}
+      else {try{const db=await new Promise((res,rej)=>{const r=indexedDB.open('agpc_gallery_db',1);r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)}); const id=Number(fig.dataset.id); const tx=db.transaction('photos','readwrite'); const store=tx.objectStore('photos'); const req=store.get(id); req.onsuccess=()=>{const row=req.result;if(row){row.title=clean;store.put(row)}}; tx.oncomplete=()=>{if(fc)fc.textContent=clean;};}catch(err){alert('Could not rename this photo.')}}
+    };
+    fig.appendChild(b);
+  }
+  function renderNames(){const names=getNames(); gallery.querySelectorAll('figure').forEach(fig=>{const im=fig.querySelector('img'); if(!im)return; const key=im.getAttribute('src'); if(names[key]){const fc=fig.querySelector('figcaption'); if(fc){const span=fc.querySelector('span'); fc.innerHTML=''; const strong=document.createElement('strong'); strong.textContent=names[key]; fc.appendChild(strong); if(span)fc.appendChild(span)}}});}
+  function refreshButtons(){
+    gallery.querySelectorAll('figure').forEach(fig=>addRenameButton(fig,fig.querySelector('img')?.getAttribute('src')||'',true));
+    added.querySelectorAll('figure').forEach(fig=>addRenameButton(fig,fig.dataset.id,false));
+    document.querySelectorAll('.rename-photo').forEach(b=>b.style.display=renameUnlocked?'block':'none');
+  }
+  const oldText=adminBtn.textContent;
+  adminBtn.addEventListener('click',()=>{setTimeout(()=>{const pw=prompt('Enter Gallery Admin Password to rename photos:'); if(pw===PASSWORD){renameUnlocked=true;refreshButtons();alert('Rename mode enabled. Click ✎ on a photo.')}},0)});
+  renderNames(); refreshButtons();
+  new MutationObserver(()=>{renderNames();refreshButtons()}).observe(added,{childList:true});
+  const style=document.createElement('style'); style.textContent='.rename-photo{position:absolute;right:52px;top:10px;border:0;background:rgba(201,155,35,.95);color:#111;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:19px;font-weight:900;z-index:4;box-shadow:0 4px 12px rgba(0,0,0,.25)}.rename-photo:hover{transform:scale(1.08)}'; document.head.appendChild(style);
+})();
+</script>
+<a class="global-home-back" href="index.html" aria-label="Back to Home"><span>←</span> Home</a>
+<script src="assets/js/kutti-ai.js"></script>
+</body></html>
